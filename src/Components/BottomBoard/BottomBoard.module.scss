@@ -1,0 +1,61 @@
+$pink: #ead7d7;
+$pinkOpacity: #ead7d7af;
+
+.BottomBoard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  height: 50px;
+  background: #fff;
+  position: relative;
+  border-radius: 5px;
+  color: #777777;
+
+  p.item {
+    position: absolute;
+    top: auto;
+    bottom: auto;
+    left: 10px;
+  }
+
+  p.clear {
+    position: absolute;
+    top: auto;
+    bottom: auto;
+    right: 10px;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 160px;
+
+  button {
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+    color: #777777;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $pinkOpacity;
+    }
+    &.active {
+      border-color: $pink;
+    }
+  }
+}
+
+
+
+.borderOff {
+  border: 0 none;
+}

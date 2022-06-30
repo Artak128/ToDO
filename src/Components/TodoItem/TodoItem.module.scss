@@ -1,0 +1,103 @@
+.FlexYCenter {
+  display: flex;
+  align-items: center;
+}
+
+.TodoItem {
+  @extend .FlexYCenter;
+  justify-content: flex-start;
+  width: 600px;
+  height: 65px;
+  background: #fff;
+  padding: 5px;
+  position: relative;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+.TodoCheckbox {
+  $green: #5dc2af;
+  @extend .FlexYCenter;
+
+  .checkedStyle {
+    @extend .FlexYCenter;
+    justify-content: center;
+    margin-right: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    &::before {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 10px;
+      border-bottom: 1px solid transparent;
+      border-right: 1px solid transparent;
+      transform: rotate(45deg);
+    }
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    &:checked {
+      & + .checkedStyle {
+        border-color: $green;
+        &::before {
+          border-color: transparent $green $green transparent;
+        }
+      }
+    }
+  }
+}
+
+.removeButton {
+  position: absolute;
+  right: 15px;
+  height: 18px;
+  width: 18px;
+  background: transparent;
+  transition: 0.25s;
+  opacity: 0;
+  border: 0 none;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: 80%;
+    width: 2px;
+    background: #b77279;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+label[for="content"] {
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover + .removeButton {
+    opacity: 0.7;
+  }
+}
+
+.isChecked {
+  color: #e6e6e6;
+  text-decoration-line: line-through;
+}
